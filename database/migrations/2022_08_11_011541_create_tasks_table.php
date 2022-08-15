@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('title');
+            $table->tinyInteger('status')->default(0);
+            $table->bigInteger('parent_task_id');
             $table->timestamps();
         });
     }
